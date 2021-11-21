@@ -11,7 +11,7 @@
 #include <sys/wait.h> // Contains wait and other similar calls 
 
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) // main function is defined with arguement count and aruguement vector for taking arguements from the command line
 {
 	struct timeval start, end; // structure of time containing seconds, milliseconds, day, daytime defined from Jan 1st 1970
 	const int SIZE = 4096; //The size (in bytes) of shared memory object 
@@ -57,7 +57,7 @@ else  // Parent Process
 		fd = shm_open (name, O_RDONLY, 0666);
 		/* memory map the shared memory object */
 		ptr = (long int *)
-		mmap (0, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+		mmap(0, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 		/* read from the shared memory object */
 		startsec = (*ptr);
 		ptr++;
@@ -65,7 +65,7 @@ else  // Parent Process
 		gettimeofday(&end,NULL); //Noting the time after execution of commands
 		timetaken = (end.tv_sec-startsec)*1e6;  // Calculating the time difference
 		timetaken = timetaken + (end.tv_usec-startusec)*1e-6;
-		shm unlink (name); /* remove the shared memory object */
+		shm_unlink (name); /* remove the shared memory object */
 		printf("Elapsed time:%0.6lf sec\n", timetaken); // Printing the elapsed time
 		wait(NULL); // Wait call for the parent until the child completes its process
 	}
