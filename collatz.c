@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include <unistd.h> // Provides access to POSIX OS API
+#include <sys/types.h> // Includes definitions of Process ids
+#include <sys/wait.h> // Contains wait and other similar calls 
 
 int main()
 {
-	pid_t pid;
+	pid_t pid; // process ids
 	int i;
 	printf("Enter the integer:");
 	scanf("%d",&i);
@@ -16,7 +16,7 @@ int main()
 		scanf("%d",&i);
 	}
 	/* fork a child process */
-	pid = fork ();
+	pid = fork (); // Forking to create a child process
 	if (pid < 0) /* error occurred */
 	{ 
 	fprintf(stderr, "Fork Failed");
@@ -24,8 +24,7 @@ int main()
 	}
 	else if (pid == 0) /* child process */
 	{
-		//execlp ("/bin/ls","ls",NULL); 
-		while(i!=1)
+		while(i!=1)  // Performing calculations for Collatz conjecture and printing all values
 		{
 			printf("%d,",i);
 			if (i%2==0)
@@ -33,7 +32,7 @@ int main()
 			else
 				i= (3*i) +1;
 		}
-	printf("%d",i);
+	printf("%d",i); 
 	}
 
 	else /* parent process */
