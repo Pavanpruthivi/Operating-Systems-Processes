@@ -55,4 +55,5 @@ int main(int argc, char *argv[]) // main function is defined with arguement coun
 		
 		wait(NULL); // Wait call for the parent until the child completes its process
 	}
+	return 0;
 }
