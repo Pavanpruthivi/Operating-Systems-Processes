@@ -57,3 +57,4 @@ int main(int argc, char *argv[]) // main function is defined with arguement coun
 	}
 	return 0;
 }
+// Some part of the code was taken from chegg website and modified accordingly
